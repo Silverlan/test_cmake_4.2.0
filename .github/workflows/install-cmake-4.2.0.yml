@@ -12,10 +12,10 @@ jobs:
       - name: Checkout (optional)
         uses: actions/checkout@v4
 
-      - name: Download CMake 4.2.0
+      - name: Download CMake 4.1.2
         run: |
           set -euo pipefail
-          VERSION=4.2.0
+          VERSION=4.1.2
           ASSET="cmake-${VERSION}-linux-x86_64.tar.gz"
           URL="https://github.com/Kitware/CMake/releases/download/v${VERSION}/${ASSET}"
           echo "Downloading $URL"
@@ -24,7 +24,7 @@ jobs:
       - name: Extract and install to /opt, symlink to /usr/local/bin
         run: |
           set -euo pipefail
-          VERSION=4.2.0
+          VERSION=4.1.2
           ASSET="cmake-${VERSION}-linux-x86_64.tar.gz"
           # Remove any previous extract
           sudo rm -rf /opt/cmake-${VERSION} || true
