@@ -18,21 +18,13 @@ jobs:
           VERSION=4.1.2
           ASSET="cmake-${VERSION}-linux-x86_64.tar.gz"
           URL="https://github.com/Kitware/CMake/releases/download/v${VERSION}/${ASSET}"
-          echo "Downloading $URL"
           wget --quiet --show-progress "$URL" -O "$ASSET"
-
-      - name: Extract and install to /opt, symlink to /usr/local/bin
-        run: |
-          set -euo pipefail
+          
           VERSION=4.1.2
           ASSET="cmake-${VERSION}-linux-x86_64.tar.gz"
-          # Remove any previous extract
           sudo rm -rf /opt/cmake-${VERSION} || true
-          # Extract into /opt
           sudo tar -C /opt -xzf "$ASSET"
-          # Move to a stable path (tarball expands to cmake-<VERSION>-linux-x86_64)
           sudo mv /opt/cmake-${VERSION}-linux-x86_64 /opt/cmake-${VERSION} || true
-          # Symlink all shipped executables into /usr/local/bin (precedes /usr/bin in PATH)
           for bin in /opt/cmake-${VERSION}/bin/*; do
             sudo ln -sf "$bin" /usr/local/bin/$(basename "$bin")
           done
