@@ -12,6 +12,11 @@ jobs:
       - name: Checkout (optional)
         uses: actions/checkout@v4
 
+      - name: Install libstdc++-15-dev
+        run: |
+          sudo apt install libstdc++-15-dev
+
+
       - name: Download CMake 4.1.2
         run: |
           set -euo pipefail
