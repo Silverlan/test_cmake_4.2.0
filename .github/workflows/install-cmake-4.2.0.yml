@@ -14,7 +14,10 @@ jobs:
 
       - name: Install libstdc++-15-dev
         run: |
-          sudo apt install libstdc++-15-dev
+          sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+          sudo apt update
+          sudo apt install g++-15 libstdc++-15-dev
+          find ~/ -type f -name "libstdc++.modules.json"
 
 
       - name: Download CMake 4.1.2
