@@ -7,7 +7,7 @@ on:
 
 jobs:
   setup-cmake:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-25
     steps:
       - name: Checkout (optional)
         uses: actions/checkout@v4
