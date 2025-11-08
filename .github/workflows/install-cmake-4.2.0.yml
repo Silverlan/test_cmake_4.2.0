@@ -14,6 +14,12 @@ jobs:
 
       - name: Install libstdc++-15-dev
         run: |
+          lsb_release -a
+          cat /etc/os-release
+          grep -R "ubuntu-toolchain-r" /etc/apt/sources.list.d/ -n
+          apt policy | sed -n '1,120p'
+
+
           sudo add-apt-repository ppa:ubuntu-toolchain-r/test
           sudo apt update
           sudo apt install g++-15 libstdc++-15-dev
